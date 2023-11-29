@@ -1,4 +1,5 @@
 @import url('../../styles/variables.css');
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
 
 .todo-form-wrapper {
     display: flex;
@@ -9,43 +10,11 @@
     margin-top: 50px;
 }
 
+.todo-form-wrapper > .ant-space-compact {
+    max-width: 800px;
+}
+
 .todo-form-wrapper > h3 {
+    font-family: 'Abel', sans-serif;
     font-weight: 400;
-}
-
-.form-input {
-    width: 350px;
-    height: 27px;
-    margin-right: 10px;
-    padding-left: 10px;
-
-    outline: none;
-
-    background-color: rgba(216, 216, 216);
-
-    border: 2px solid transparent;
-    border-radius: 7px;
-
-    transition: all 0.1s linear;
-}
-
-.form-input:focus {
-    border: 2px solid var(--lightbrown);
-}
-
-.form-button {
-    height: 33px;
-    border-radius: 7px;
-
-    padding-left: 10px;
-    padding-right: 10px;
-
-    background-color: rgba(216, 216, 216);
-    border-color: transparent;
-    cursor: pointer;
-
-    transition: all 0.1s linear;
-}
-.form-button:hover {
-    border: 2px solid var(--lightbrown);
 }
