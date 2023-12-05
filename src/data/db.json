@@ -1,6 +1,14 @@
 {
     "todos": [
-        { "id": 1, "text": "my fist todo" },
-        { "id": 2, "text": "my fist todo" }
+        {
+            "id": 1,
+            "text": "my fist todo",
+            "date": "05/12/2023"
+        },
+        {
+            "id": 2,
+            "text": "my fist todos",
+            "date": "29/11/2023"
+        }
     ]
 }
