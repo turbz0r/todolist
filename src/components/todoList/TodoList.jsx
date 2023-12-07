@@ -8,10 +8,9 @@ const { Text } = Typography;
 const count = 6;
 const todosUrl = 'http://localhost:3000/todos';
 
-const TodoList = () => {
+const TodoList = ({ data, handleDelete }) => {
     const [initLoading, setInitLoading] = useState(true);
     const [loading, setLoading] = useState(false);
-    const [data, setData] = useState([]);
     const [list, setList] = useState([]);
 
     useEffect(() => {
@@ -19,10 +18,9 @@ const TodoList = () => {
             .then((res) => res.json())
             .then((res) => {
                 setInitLoading(false);
-                setData(res);
                 setList(res);
             });
-    }, []);
+    }, [data]);
     const onLoadMore = () => {
         setLoading(true);
         setList(
@@ -36,7 +34,6 @@ const TodoList = () => {
             .then((res) => res.json())
             .then((res) => {
                 const newData = [...data, ...res];
-                setData(newData);
                 setList(newData);
                 setLoading(false);
                 window.dispatchEvent(new Event('resize'));
@@ -72,6 +69,7 @@ const TodoList = () => {
             theme={{
                 token: {
                     colorLink: '#c38154',
+                    colorPrimary: '#c38154',
                 },
             }}
         >
@@ -82,9 +80,18 @@ const TodoList = () => {
                 loadMore={loadMore}
                 dataSource={list}
                 renderItem={(item, index) => (
-                    <div className='list-item-wrap'>
+                    <div key={item.id} className='list-item-wrap'>
                         <List.Item
-                            actions={[<a key='list-loadmore-delete'>delete</a>]}
+                            actions={[
+                                <a
+                                    key='list-loadmore-delete'
+                                    onClick={() => {
+                                        handleDelete(item.id);
+                                    }}
+                                >
+                                    done
+                                </a>,
+                            ]}
                         >
                             <Skeleton
                                 title={false}
