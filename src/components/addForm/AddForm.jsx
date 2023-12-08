@@ -28,6 +28,7 @@ const AddForm = (props) => {
                     }}
                 >
                     <Input
+                        value={input}
                         placeholder='Enter todo here...'
                         onChange={(e) => {
                             setInput(e.target.value);
@@ -37,6 +38,7 @@ const AddForm = (props) => {
                         type='primary'
                         onClick={() => {
                             handleSubmit();
+                            setInput(null);
                         }}
                     >
                         Submit

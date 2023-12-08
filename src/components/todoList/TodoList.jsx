@@ -101,13 +101,16 @@ const TodoList = ({ data, handleDelete }) => {
                                 <Text
                                     style={{
                                         width: '100%',
+                                        fontWeight: 600,
                                     }}
                                 >
                                     {item.text}
                                 </Text>
                                 <div className='list-item-date'>
-                                    <span>Added on : </span>
-                                    {item.date}
+                                    Added on :
+                                    <span style={{ fontWeight: 600 }}>
+                                        {` ${item.date}`}
+                                    </span>
                                 </div>
                             </Skeleton>
                         </List.Item>

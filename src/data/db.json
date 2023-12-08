@@ -2,13 +2,8 @@
   "todos": [
     {
       "id": 1,
-      "text": "my fist todo",
-      "date": "03/12/2023"
-    },
-    {
-      "id": 3,
-      "text": "asdasd",
-      "date": "07/12/2023"
+      "text": "PUBG check-in",
+      "date": "08/12/2023"
     }
   ]
 }

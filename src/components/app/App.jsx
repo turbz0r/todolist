@@ -7,18 +7,18 @@ import './App.css';
 const todosUrl = 'http://localhost:3000/todos';
 
 function App() {
+    const [forceUpdate, setForceUpdate] = useState(false);
     const [data, setData] = useState([]);
-    //TODO synchronize todo items among form/list and App component making it(App) main recieveing component
 
     useEffect(() => {
         fetch(todosUrl)
             .then((res) => res.json())
             .then((res) => {
                 setData(res);
+                setForceUpdate(false);
             });
-    }, []);
+    }, [forceUpdate]);
 
-    console.log(data);
     const onPostTodo = (data) => {
         const date = new Date().toLocaleDateString('en-GB');
         fetch(todosUrl, {
@@ -29,13 +29,7 @@ function App() {
             body: JSON.stringify({ id: '', text: data, date: date }),
         })
             .then(() => {
-                return fetch(todosUrl);
-            })
-            .then((res) => {
-                res.json();
-            })
-            .then((res) => {
-                setData(res);
+                setForceUpdate(true);
             })
             .catch((e) => {
                 console.log(e);
@@ -51,8 +45,8 @@ function App() {
                 if (!res.ok) {
                     throw new Error('Something went wrong...');
                 }
-                //TODO
-                //re-request here to get updated todos from db
+
+                setForceUpdate(true);
             })
             .catch((e) => {
                 console.log(e);
